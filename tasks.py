@@ -1,106 +1,98 @@
 from crewai import Task
 
-from crewai import Task
+class TarefasDaEquipeDePesquisa:
 
-class ResearchCrewTasks:
-
-    def research_task(self, agent, inputs):
-      return Task(
-          agent=agent,
-          description=f"Systematically gather and document current and relevant news and articles from diverse sources about {inputs}. Use all available digital tools to ensure comprehensive coverage.",
-          expected_output=f"""
-  Detailed Research Report on {inputs}
-  1. **Executive Summary**: A concise overview of the research findings, highlighting the most critical insights and conclusions drawn from the gathered data.
-  2. **Introduction**: Background information on why the research on {inputs} is crucial at this point in time. Include the scope of the research and the main objectives.
-  3. **Methodology**:
-    - **Sources Used**: List all sources utilized, including digital databases, news websites, and any subscriptions or specialized tools.
-    - **Search Criteria**: Describe the search criteria and keywords used to gather the relevant information.
-    - **Data Collection Process**: Outline the steps taken in the data collection process, including any automation tools or software used.
-  4. **Findings**:
-    - **Key Information Gathered**: Summarize the key information gathered from each source, categorized by relevance and impact on the topic.
-    - **Themes Identified**: Discuss any recurring themes or commonalities found across different sources.
-  5. **Analysis**:
-    - **Relevance to Current Trends**: Analyze how the findings relate to current trends or developments in the field.
-    - **Gaps in Information**: Highlight any noticeable gaps in information that could require further research.
-  6. **Conclusion**:
-    - **Summary of Findings**: Briefly reiterate the most critical findings and their implications.
-    - **Recommendations for Further Research**: Suggest areas where additional investigation could be beneficial based on gaps or emerging trends noted during the research.
-  7. **References**:
-    - **Full Citations**: Provide full citations for all sources used, formatted according to a recognized academic standard.
-          """
-      )
-
-
-    def analysis_task(self, agent, context):
-      return Task(
-        agent=agent,
-        context=context,
-        description="Critically assess the accuracy, relevance, and depth of the information collected. Employ advanced data analysis methodologies to enhance the information's value, ensuring it meets the high standards required for expert assessment.",
-        expected_output=f"""
-  Comprehensive Analysis Report:
-  1. **Executive Summary**: An overview summarizing the key findings, including the accuracy, relevance, and depth of the analyzed information.
-  2. **Accuracy Assessment**:
-    - **Data Verification**: Evaluate the truthfulness and correctness of the data collected, identifying any discrepancies or inconsistencies.
-    - **Source Reliability**: Assess the reliability of the sources used, providing a credibility score for each.
-  3. **Relevance Analysis**:
-    - **Contextual Alignment**: Analyze how the information aligns with the current research questions and objectives.
-    - **Currentness**: Verify that the information is up-to-date and discuss its significance in the current context.
-  4. **Depth Evaluation**:
-    - **Comprehensiveness**: Evaluate the scope of the information and whether it covers all necessary aspects of the topic.
-    - **Insightfulness**: Assess the depth of insights provided by the information, including any underlying implications or hidden patterns.
-  5. **Methodological Review**:
-    - **Techniques Used**: Outline and critique the data analysis methodologies employed, suggesting improvements or alternatives if necessary.
-    - **Data Handling**: Discuss how the data was processed and analyzed, including any tools or software utilized.
-  6. **Recommendations**:
-    - **Further Research**: Suggest areas where additional information is needed and propose methods for gathering this data.
-    - **Practical Applications**: Provide recommendations on how the findings can be utilized practically by stakeholders or in further research.
-  7. **Conclusion**:
-    - **Summary of Key Points**: Concisely reiterate the most important findings and their implications for the research project.
-    - **Future Directions**: Suggest how the findings can inform future research and decision-making processes in the relevant field.
-  8. **Appendices**:
-    - **Data Tables and Figures**: Include comprehensive tables, charts, and graphs that were used in the analysis.
-    - **Source Documentation**: Provide detailed citations and references for all sources and data used in the report.
-          """
-    )
-
-
-    def writing_task(self, agent, context):
+    def tarefa_de_pesquisa(self, agente, inputs):
         return Task(
-            agent=agent,
-            context=context,
-            description="Synthesize the information provided by the Researcher and enhanced by the Analyst into a compelling, clear, and well-structured summary. Include key findings and appropriately cite all sources to ensure credibility and traceability.",
+            agent=agente,
+            description=f"Reunir e documentar sistematicamente notícias e artigos atuais e relevantes de diversas fontes sobre {inputs}. Use todas as ferramentas digitais disponíveis para garantir uma cobertura abrangente.",
             expected_output=f"""
-    Comprehensive Summary Report:
-    1. **Introduction**:
-      - **Background**: Provide a brief introduction to the topic, outlining the scope and purpose of the initial research.
-      - **Objectives**: Recap the main objectives of the research to set the context for the findings.
-
-    2. **Synthesis of Research and Analysis**:
-      - **Key Findings**: Present the key findings from the research phase, emphasizing significant data points, trends, and insights.
-      - **Analytical Enhancements**: Discuss how the analysis phase added value to the initial findings, including any new insights or understandings derived from deeper examination.
-
-    3. **Discussion**:
-      - **Implications**: Explore the implications of the findings in a broader context, discussing potential impacts on the field, industry, or society.
-      - **Critical Evaluation**: Critically evaluate the findings, noting strengths, weaknesses, and any contentious points that emerged during the research and analysis phases.
-
-    4. **Recommendations**:
-      - **Actionable Steps**: Provide clear, actionable recommendations based on the findings and discussions. These should be practical and tailored to specific stakeholders or policy implications.
-      - **Future Research**: Suggest areas for future research that could build on the current findings, addressing any gaps or unresolved questions.
-
-    5. **Conclusion**:
-      - **Summary of Findings**: Summarize the main points of the report, reinforcing the significance and reliability of the research conducted.
-      - **Final Thoughts**: Offer concluding thoughts that underscore the importance of the findings and the potential for future work in this area.
-
-    6. **References**:
-      - **Citations**: Include a detailed list of all sources cited in the document, formatted according to a recognized academic or professional standard.
-      - **Source Annotations**: Optionally, provide annotations for key sources, explaining their relevance and reliability.
-
-    7. **Appendices** (if applicable):
-      - **Supporting Documents**: Attach any supporting documents, data tables, or supplementary material referenced in the report.
-      - **Glossary of Terms**: Include a glossary of key terms and definitions used throughout the report for clarity.
+  Relatório Detalhado de Pesquisa sobre {inputs}
+  1. **Resumo Executivo**: Uma visão geral concisa das descobertas da pesquisa, destacando os insights e conclusões mais críticos derivados dos dados coletados.
+  2. **Introdução**: Informações de fundo sobre por que a pesquisa sobre {inputs} é crucial neste momento. Incluir o escopo da pesquisa e os principais objetivos.
+  3. **Metodologia**:
+    - **Fontes Utilizadas**: Listar todas as fontes utilizadas, incluindo bancos de dados digitais, sites de notícias e quaisquer assinaturas ou ferramentas especializadas.
+    - **Critérios de Pesquisa**: Descrever os critérios de pesquisa e palavras-chave usadas para coletar as informações relevantes.
+    - **Processo de Coleta de Dados**: Descrever os passos tomados no processo de coleta de dados, incluindo quaisquer ferramentas ou softwares de automação utilizados.
+  4. **Descobertas**:
+    - **Informações Chave Reunidas**: Resumir as principais informações coletadas de cada fonte, categorizadas por relevância e impacto no tópico.
+    - **Temas Identificados**: Discutir quaisquer temas recorrentes ou similaridades encontradas em diferentes fontes.
+  5. **Análise**:
+    - **Relevância para Tendências Atuais**: Analisar como as descobertas se relacionam com tendências ou desenvolvimentos atuais no campo.
+    - **Lacunas de Informação**: Destacar quaisquer lacunas notáveis nas informações que possam exigir mais pesquisa.
+  6. **Conclusão**:
+    - **Resumo das Descobertas**: Reiterar brevemente as descobertas mais críticas e suas implicações.
+    - **Recomendações para Pesquisas Futuras**: Sugerir áreas onde investigação adicional poderia ser benéfica com base nas lacunas ou tendências emergentes observadas durante a pesquisa.
+  7. **Referências**:
+    - **Citações Completas**: Fornecer citações completas para todas as fontes usadas, formatadas de acordo com um padrão acadêmico reconhecido.
             """
         )
 
+    def tarefa_de_analise(self, agente, contexto):
+        return Task(
+            agent=agente,
+            context=contexto,
+            description="Avaliar criticamente a precisão, relevância e profundidade das informações coletadas. Empregar metodologias avançadas de análise de dados para melhorar o valor das informações, garantindo que atendam aos altos padrões exigidos para avaliação especializada.",
+            expected_output=f"""
+  Relatório de Análise Compreensiva:
+  1. **Resumo Executivo**: Uma visão geral que resume as principais descobertas, incluindo a precisão, relevância e profundidade das informações analisadas.
+  2. **Avaliação da Precisão**:
+    - **Verificação de Dados**: Avaliar a veracidade e correção dos dados coletados, identificando quaisquer discrepâncias ou inconsistências.
+    - **Confiabilidade das Fontes**: Avaliar a confiabilidade das fontes utilizadas, fornecendo uma pontuação de credibilidade para cada uma.
+  3. **Análise de Relevância**:
+    - **Alinhamento Contextual**: Analisar como as informações se alinham com as perguntas e objetivos atuais da pesquisa.
+    - **Atualidade**: Verificar se as informações estão atualizadas e discutir sua significância no contexto atual.
+  4. **Avaliação de Profundidade**:
+    - **Abrangência**: Avaliar o escopo das informações e se elas cobrem todos os aspectos necessários do tópico.
+    - **Perspicácia**: Avaliar a profundidade dos insights fornecidos pelas informações, incluindo quaisquer implicações subjacentes ou padrões ocultos.
+  5. **Revisão Metodológica**:
+    - **Técnicas Utilizadas**: Descrever e criticar as metodologias de análise de dados empregadas, sugerindo melhorias ou alternativas, se necessário.
+    - **Manipulação de Dados**: Discutir como os dados foram processados e analisados, incluindo quaisquer ferramentas ou softwares utilizados.
+  6. **Recomendações**:
+    - **Pesquisas Futuras**: Sugerir áreas onde informações adicionais são necessárias e propor métodos para coletar esses dados.
+    - **Aplicações Práticas**: Fornecer recomendações sobre como as descobertas podem ser utilizadas de forma prática por partes interessadas ou em pesquisas futuras.
+  7. **Conclusão**:
+    - **Resumo dos Pontos Chave**: Reiterar de forma concisa as descobertas mais importantes e suas implicações para o projeto de pesquisa.
+    - **Direções Futuras**: Sugerir como as descobertas podem informar pesquisas futuras e processos de tomada de decisão no campo relevante.
+  8. **Apêndices**:
+    - **Tabelas e Figuras de Dados**: Incluir tabelas, gráficos e diagramas abrangentes que foram usados na análise.
+    - **Documentação das Fontes**: Fornecer citações detalhadas e referências para todas as fontes e dados usados no relatório.
+            """
+        )
 
+    def tarefa_de_escrita(self, agente, contexto):
+        return Task(
+            agent=agente,
+            context=contexto,
+            description="Sintetizar as informações fornecidas pelo Pesquisador e aprimoradas pelo Analista em um resumo claro, convincente e bem estruturado. Incluir as principais descobertas e citar todas as fontes apropriadamente para garantir credibilidade e rastreabilidade.",
+            expected_output=f"""
+    Relatório de Resumo Compreensivo:
+    1. **Introdução**:
+      - **Contexto**: Fornecer uma breve introdução ao tópico, delineando o escopo e o propósito da pesquisa inicial.
+      - **Objetivos**: Recapitular os principais objetivos da pesquisa para definir o contexto das descobertas.
 
+    2. **Síntese da Pesquisa e Análise**:
+      - **Principais Descobertas**: Apresentar as principais descobertas da fase de pesquisa, enfatizando pontos de dados significativos, tendências e insights.
+      - **Aprimoramentos Analíticos**: Discutir como a fase de análise agregou valor às descobertas iniciais, incluindo quaisquer novos insights ou entendimentos derivados de um exame mais profundo.
 
+    3. **Discussão**:
+      - **Implicações**: Explorar as implicações das descobertas em um contexto mais amplo, discutindo potenciais impactos no campo, indústria ou sociedade.
+      - **Avaliação Crítica**: Avaliar criticamente as descobertas, observando pontos fortes, fraquezas e quaisquer pontos controversos que surgiram durante as fases de pesquisa e análise.
+
+    4. **Recomendações**:
+      - **Passos Práticos**: Fornecer recomendações práticas e acionáveis baseadas nas descobertas e discussões. Estas devem ser práticas e adaptadas a partes interessadas específicas ou implicações políticas.
+      - **Pesquisas Futuras**: Sugerir áreas para futuras pesquisas que possam construir sobre as descobertas atuais, abordando quaisquer lacunas ou questões não resolvidas.
+
+    5. **Conclusão**:
+      - **Resumo das Descobertas**: Resumir os principais pontos do relatório, reforçando a significância e confiabilidade da pesquisa realizada.
+      - **Considerações Finais**: Oferecer considerações finais que enfatizem a importância das descobertas e o potencial para trabalhos futuros nesta área.
+
+    6. **Referências**:
+      - **Citações**: Incluir uma lista detalhada de todas as fontes citadas no documento, formatadas de acordo com um padrão acadêmico ou profissional reconhecido.
+      - **Anotações das Fontes**: Opcionalmente, fornecer anotações para fontes chave, explicando sua relevância e confiabilidade.
+
+    7. **Apêndices** (se aplicável):
+      - **Documentos de Suporte**: Anexar quaisquer documentos de suporte, tabelas de dados ou material suplementar referenciado no relatório.
+      - **Glossário de Termos**: Incluir um glossário de termos chave e definições usados ao longo do relatório para maior clareza.
+            """
+        )
