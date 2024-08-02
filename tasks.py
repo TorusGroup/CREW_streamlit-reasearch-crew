@@ -2,9 +2,9 @@ from crewai import Task
 
 class ResearchCrewTasks:
 
-    def tarefa_de_pesquisa(self, agente, inputs):
+    def research_task(self, agent, inputs):
         return Task(
-            agent=agente,
+            agent=agent,
             description=f"Reunir e documentar sistematicamente notícias e artigos atuais e relevantes de diversas fontes sobre {inputs}. Use todas as ferramentas digitais disponíveis para garantir uma cobertura abrangente.",
             expected_output=f"""
   Relatório Detalhado de Pesquisa sobre {inputs}
@@ -28,10 +28,10 @@ class ResearchCrewTasks:
             """
         )
 
-    def tarefa_de_analise(self, agente, contexto):
+    def analysis_task(self, agent, context):
         return Task(
-            agent=agente,
-            context=contexto,
+            agent=agent,
+            context=context,
             description="Avaliar criticamente a precisão, relevância e profundidade das informações coletadas. Empregar metodologias avançadas de análise de dados para melhorar o valor das informações, garantindo que atendam aos altos padrões exigidos para avaliação especializada.",
             expected_output=f"""
   Relatório de Análise Compreensiva:
@@ -60,10 +60,10 @@ class ResearchCrewTasks:
             """
         )
 
-    def tarefa_de_escrita(self, agente, contexto):
+    def writing_task(self, agent, context):
         return Task(
-            agent=agente,
-            context=contexto,
+            agent=agent,
+            context=context,
             description="Sintetizar as informações fornecidas pelo Pesquisador e aprimoradas pelo Analista em um resumo claro, convincente e bem estruturado. Incluir as principais descobertas e citar todas as fontes apropriadamente para garantir credibilidade e rastreabilidade.",
             expected_output=f"""
     Relatório de Resumo Compreensivo:
