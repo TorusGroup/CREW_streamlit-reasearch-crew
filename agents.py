@@ -9,8 +9,8 @@ class AgentesDaEquipeDePesquisa:
         self.serper = SerperDevTool()
         self.web = WebsiteSearchTool()
         self.txt_tool = TXTSearchTool()
-        self.gpt3 = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.7)
-        self.gpt4 = ChatOpenAI(model_name="gpt-4", temperature=0.7)
+        self.gpt3 = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.7)
+        self.gpt4 = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.7)
 
     def pesquisador(self):
         # Configuração detalhada do agente para o Pesquisador
