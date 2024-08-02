@@ -1,6 +1,6 @@
 from crewai import Task
 
-class TarefasDaEquipeDePesquisa:
+class ResearchCrewTasks:
 
     def tarefa_de_pesquisa(self, agente, inputs):
         return Task(
