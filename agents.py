@@ -5,15 +5,15 @@ from crewai_tools import SerperDevTool, WebsiteSearchTool, YoutubeChannelSearchT
 class ResearchCrewAgents:
 
     def __init__(self):
-        # Inicializar ferramentas se necessário
+        # Initialize tools if needed
         self.serper = SerperDevTool()
         self.web = WebsiteSearchTool()
         self.txt_tool = TXTSearchTool()
         self.gpt3 = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.7)
         self.gpt4 = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.7)
 
-    def pesquisador(self):
-        # Configuração detalhada do agente para o Pesquisador
+    def researcher(self):
+        # Detailed agent setup for the Researcher
         return Agent(
             role='Especialista em Pesquisa',
             goal='Vasculhar sistematicamente fontes para reunir notícias e artigos atuais sobre diversos tópicos.',
@@ -24,8 +24,8 @@ class ResearchCrewAgents:
             llm=self.gpt3,
         )
 
-    def analista(self):
-        # Configuração detalhada do agente para o Analista
+    def analyst(self):
+        # Detailed agent setup for the Analyst
         return Agent(
             role='Especialista em Análise de Dados',
             goal='Avaliar e aprimorar as informações coletadas para garantir precisão e relevância.',
@@ -36,8 +36,8 @@ class ResearchCrewAgents:
             llm=self.gpt3,
         )
 
-    def escritor(self):
-        # Configuração detalhada do agente para o Escritor
+    def writer(self):
+        # Detailed agent setup for the Writer
         return Agent(
             role='Mestre Narrador e Escritor Técnico',
             goal='Integrar e articular insights em uma narrativa convincente com citações precisas.',
