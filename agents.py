@@ -2,7 +2,7 @@ from crewai import Agent
 from langchain_openai import ChatOpenAI
 from crewai_tools import SerperDevTool, WebsiteSearchTool, YoutubeChannelSearchTool, TXTSearchTool
 
-class AgentesDaEquipeDePesquisa:
+class ResearchCrewAgents:
 
     def __init__(self):
         # Inicializar ferramentas se necessário
