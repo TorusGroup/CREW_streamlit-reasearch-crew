@@ -9,7 +9,7 @@ from tasks import ResearchCrewTasks
 os.environ["OPENAI_API_KEY"] = "SUA CHAVE DE API AQUI"
 os.environ["SERPER_API_KEY"] = "SUA CHAVE DE API AQUI"
 
-class EquipeDePesquisa:
+class ResearchCrew:
     def __init__(self, inputs):
         self.inputs = inputs
         self.agents = ResearchCrewAgents()
@@ -17,37 +17,37 @@ class EquipeDePesquisa:
 
     def run(self):
         # Inicializar agentes
-        pesquisador = self.agents.pesquisador()
-        analista = self.agents.analista()
-        escritor = self.agents.escritor()
+        researcher = self.agents.researcher()
+        analyst = self.agents.analyst()
+        writer = self.agents.writer()
 
         # Inicializar tarefas com respectivos agentes
-        tarefa_de_pesquisa = self.tasks.research_task(pesquisador, self.inputs)
-        tarefa_de_analise = self.tasks.analysis_task(analista, [tarefa_de_pesquisa])
-        tarefa_de_escrita = self.tasks.writing_task(escritor, [tarefa_de_analise])
+        research_task = self.tasks.research_task(researcher, self.inputs)
+        analysis_task = self.tasks.analysis_task(analyst, [research_task])
+        writing_task = self.tasks.writing_task(writer, [analysis_task])
 
         # Formar a equipe com os agentes e tarefas definidos
-        equipe = Crew(
-            agents=[pesquisador, analista, escritor],
-            tasks=[tarefa_de_pesquisa, tarefa_de_analise, tarefa_de_escrita],
+        crew = Crew(
+            agents=[researcher, analyst, writer],
+            tasks=[research_task, analysis_task, writing_task],
             process=Process.sequential
         )
 
         # Executar a equipe para realizar o projeto de pesquisa
-        return equipe.kickoff()
+        return crew.kickoff()
 
 if __name__ == "__main__":
     print("Bem-vindo à Configuração da Equipe de Pesquisa")
     print("---------------------------------------")
-    topico = input("Por favor, insira o tópico principal da sua pesquisa: ")
-    perguntas_detalhadas = input("Quais perguntas específicas ou subtópicos você está interessado em explorar? ")
-    pontos_chave = input("Há algum ponto chave ou informação específica que você precisa incluir na pesquisa? ")
+    topic = input("Por favor, insira o tópico principal da sua pesquisa: ")
+    detailed_questions = input("Quais perguntas específicas ou subtópicos você está interessado em explorar? ")
+    key_points = input("Há algum ponto chave ou informação específica que você precisa incluir na pesquisa? ")
 
-    inputs = f"Tópico da Pesquisa: {topico}\nPerguntas Detalhadas: {perguntas_detalhadas}\nPontos Chave: {pontos_chave}"
-    equipe_de_pesquisa = EquipeDePesquisa(inputs)
-    resultado = equipe_de_pesquisa.run()
+    inputs = f"Tópico da Pesquisa: {topic}\nPerguntas Detalhadas: {detailed_questions}\nPontos Chave: {key_points}"
+    research_crew = ResearchCrew(inputs)
+    result = research_crew.run()
 
     print("\n\n##############################")
     print("## Aqui estão os resultados do seu projeto de pesquisa:")
     print("##############################\n")
-    print(resultado)
+    print(result)
