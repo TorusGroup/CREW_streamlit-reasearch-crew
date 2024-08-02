@@ -1,23 +1,23 @@
 import streamlit as st
-from main import ResearchCrew  # Import the ResearchCrew class from main.py
+from main import ResearchCrew  # Importar a classe ResearchCrew de main.py
 import os
 
-st.title('Research Crew Setup')
-os.environ["OPENAI_API_KEY"] = "YOU API KEY HERE"
-os.environ["SERPER_API_KEY"] = "YOU API KEY HERE"
+st.title('Configuração da Equipe de Pesquisa')
+os.environ["OPENAI_API_KEY"] = "SUA CHAVE DE API AQUI"
+os.environ["SERPER_API_KEY"] = "SUA CHAVE DE API AQUI"
 
 with st.sidebar:
-    st.header('Enter Research Details')
-    topic = st.text_input("Main topic of your research:")
-    detailed_questions = st.text_area("Specific questions or subtopics you are interested in exploring:")
-    key_points = st.text_area("Key points or specific information needed:")
+    st.header('Insira os Detalhes da Pesquisa')
+    topic = st.text_input("Tópico principal da sua pesquisa:")
+    detailed_questions = st.text_area("Perguntas específicas ou subtópicos que você está interessado em explorar:")
+    key_points = st.text_area("Pontos chave ou informações específicas necessárias:")
 
-if st.button('Run Research'):
+if st.button('Executar Pesquisa'):
     if not topic or not detailed_questions or not key_points:
-        st.error("Please fill all the fields.")
+        st.error("Por favor, preencha todos os campos.")
     else:
-        inputs = f"Research Topic: {topic}\nDetailed Questions: {detailed_questions}\nKey Points: {key_points}"
+        inputs = f"Tópico da Pesquisa: {topic}\nPerguntas Detalhadas: {detailed_questions}\nPontos Chave: {key_points}"
         research_crew = ResearchCrew(inputs)
         result = research_crew.run()
-        st.subheader("Results of your research project:")
+        st.subheader("Resultados do seu projeto de pesquisa:")
         st.write(result)
