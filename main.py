@@ -17,9 +17,9 @@ class EquipeDePesquisa:
 
     def run(self):
         # Inicializar agentes
-        pesquisador = self.agents.researcher()
-        analista = self.agents.analyst()
-        escritor = self.agents.writer()
+        pesquisador = self.agents.pesquisador()
+        analista = self.agents.analista()
+        escritor = self.agents.escritor()
 
         # Inicializar tarefas com respectivos agentes
         tarefa_de_pesquisa = self.tasks.research_task(pesquisador, self.inputs)
